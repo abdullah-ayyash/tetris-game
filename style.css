@@ -1,6 +1,6 @@
 .grid{
-    height: 600px;
-    width: 300px;
+    height: 400px;
+    width: 200px;
     background-color: yellow;
     display: flex;
     flex-wrap: wrap;
@@ -8,8 +8,8 @@
 }
 
 .grid div{
-    height: 30px;
-    width: 30px;
+    height: 20px;
+    width: 20px;
     box-sizing: border-box;
     border: 3px outset #ffeb3bab
 }
@@ -20,7 +20,7 @@
 }
 
 .grid .unused{
-    border: none;
+    border: none!important;
 }
 #start-btn{
     font-size: 16px;
