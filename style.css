@@ -1,0 +1,68 @@
+.grid{
+    height: 600px;
+    width: 300px;
+    background-color: yellow;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.grid div{
+    height: 30px;
+    width: 30px;
+    box-sizing: border-box;
+    border: 3px outset #ffeb3bab
+}
+
+.tetromino{
+    background-color: #3F51B5;
+    border: 3px outset #3F51B5ab!important;
+}
+
+.grid .unused{
+    border: none;
+}
+#start-btn{
+    font-size: 16px;
+    background-color: #4CAF50;
+    padding: 10px 15px;
+    color: white;
+    border: none;
+    border-radius: 3px;
+}
+
+h3{
+    margin: 10px 5px;
+    text-align: center;
+}
+
+#control-btns{
+    text-align: center;
+    margin-top: 10px;
+}
+
+#mini-grid{
+    width: 120px;
+    height: 120px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: yellow;
+    margin-left: 20px;
+}
+#mini-grid div{
+    height: 30px;
+    width: 30px;
+    box-sizing: border-box;
+}
+
+#container{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+.top-controls{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 10px;
+}
