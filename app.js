@@ -197,6 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 row.forEach(index => {
                     squares[index].classList.remove('taken')
                     squares[index].classList.remove('tetromino')
+                    squares[index].style.backgroundColor = '';
                 })
 
                 const squaresRemoved = squares.splice(i,width)
@@ -205,6 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     }
+
 
     function gameOver(){
         if(current.some(index => squares[index + currentPosition].classList.contains('taken'))){
