@@ -39,6 +39,19 @@ h3{
 #control-btns{
     text-align: center;
     margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+}
+#control-btns button{
+    font-size: 14px;
+    background-color: #4CAF50;
+    padding: 5px 10px;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    margin-top: 10px;
 }
 
 #mini-grid{

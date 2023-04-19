@@ -216,14 +216,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const rightBtn = document.getElementById('right-btn')
-    rightBtn.addEventListener('click', (e) =>{
+    rightBtn.addEventListener('click', () =>{
         moveRight()
     })
 
     const leftBtn = document.getElementById('left-btn')
-    leftBtn.addEventListener('click', (e) =>{
+    leftBtn.addEventListener('click', () =>{
         moveLeft()
     })
+
+    const upBtn = document.getElementById('up-btn')
+    upBtn.addEventListener('click', () =>{
+        rotate()
+    })
+    
+
+
+    const downBtn = document.getElementById('down-btn')
+    downBtn.addEventListener('click', () =>{
+        moveDown();
+    })
+    
 
 })
 
