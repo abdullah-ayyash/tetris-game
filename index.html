@@ -1,267 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS Game</title>
-    <link href="style.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Tetris – a playable browser game</title>
+  <meta name="description" content="A Tetris game in plain JavaScript with hold, ghost piece, wall kicks, levels, touch controls and a saved high score.">
+  <meta name="theme-color" content="#070b18">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
-    <div class="top-controls">
-        <button id="start-btn">Start/Pause</button>
-        <h3>Score:<span id="score">0</span></h3>
+  <main class="game">
+    <h1 class="title">Tetris</h1>
+
+    <div class="layout">
+      <aside class="panel left" aria-label="Hold and progress">
+        <section>
+          <h2>Hold</h2>
+          <canvas id="hold" class="mini" aria-label="Held piece"></canvas>
+        </section>
+        <dl class="stats">
+          <div><dt>Level</dt><dd id="level">1</dd></div>
+          <div><dt>Lines</dt><dd id="lines">0</dd></div>
+        </dl>
+      </aside>
+
+      <div class="board-wrap">
+        <canvas id="board" aria-label="Tetris board"></canvas>
+        <div id="overlay" class="overlay">
+          <h2 id="ov-title"></h2>
+          <p id="ov-text"></p>
+          <button id="ov-btn" class="btn" type="button"></button>
+          <p class="hint">or press Enter</p>
+        </div>
+      </div>
+
+      <aside class="panel right" aria-label="Next pieces and score">
+        <section>
+          <h2>Next</h2>
+          <canvas id="next" class="mini tall" aria-label="Next pieces"></canvas>
+        </section>
+        <dl class="stats">
+          <div><dt>Score</dt><dd id="score">0</dd></div>
+          <div><dt>Best</dt><dd id="best">0</dd></div>
+        </dl>
+      </aside>
     </div>
 
-
-    <div id="container">
-        <div class="grid">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-
-            <div class="taken unused"></div>
-            <div class="taken unused"></div>
-            <div class="taken unused"></div>
-            <div class="taken unused"></div>
-            <div class="taken unused"></div>
-            <div class="taken unused"></div>
-            <div class="taken unused"></div>
-            <div class="taken unused"></div>
-            <div class="taken unused"></div>
-            <div class="taken unused"></div>
-        </div>
-
-        <div id="mini-grid">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
+    <div class="touch" aria-label="Touch controls">
+      <button type="button" data-act="hold" tabindex="-1" aria-label="Hold">Hold</button>
+      <button type="button" data-act="rotate" tabindex="-1" aria-label="Rotate">⟳</button>
+      <button type="button" data-act="drop" tabindex="-1" aria-label="Hard drop">Drop</button>
+      <button type="button" data-act="left" tabindex="-1" aria-label="Move left">◀</button>
+      <button type="button" data-act="down" tabindex="-1" aria-label="Soft drop">▼</button>
+      <button type="button" data-act="right" tabindex="-1" aria-label="Move right">▶</button>
     </div>
 
-    <div id="control-btns">
-        <button id="left-btn">Left</button>
-        <div style="display: flex; flex-direction: column;">
-            <button id="up-btn">Up</button>
-            <button id="down-btn">Down</button>
-        </div>
-        <button id="right-btn">Right</button>
-    </div>
+    <section class="help" aria-label="Controls">
+      <h2>Controls</h2>
+      <ul>
+        <li><kbd>←</kbd><kbd>→</kbd> move</li>
+        <li><kbd>↑</kbd> / <kbd>X</kbd> rotate</li>
+        <li><kbd>Z</kbd> rotate back</li>
+        <li><kbd>↓</kbd> soft drop</li>
+        <li><kbd>Space</kbd> hard drop</li>
+        <li><kbd>C</kbd> hold</li>
+        <li><kbd>P</kbd> pause</li>
+      </ul>
+    </section>
+    <p id="status" class="sr" role="status" aria-live="polite"></p>
+  </main>
 
-
-    <script src="app.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/input.js"></script>
+  <script src="js/main.js"></script>
 </body>
-
 </html>
